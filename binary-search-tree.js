@@ -1,94 +1,102 @@
 class Node {
-  constructor(val, left = null, right = null) {
-    this.val = val;
-    this.left = left;
-    this.right = right;
-  }
+	constructor(val, left = null, right = null) {
+		this.val = val;
+		this.left = left;
+		this.right = right;
+	}
 }
 
 class BinarySearchTree {
-  constructor(root = null) {
-    this.root = root;
-  }
+	constructor(root = null) {
+		this.root = root;
+	}
 
-  /** insert(val): insert a new node into the BST with value val.
-   * Returns the tree. Uses iteration. */
+	/** insert(val): insert a new node into the BST with value val.
+	 * Returns the tree. Uses iteration. */
 
-  insert(val) {
+	insert(val) {
+		const node = new Node(val);
 
-  }
+		// Set the root to be the new node if the tree is empty.
+		if (this.root === null) {
+			this.root = node;
+			return this;
+		}
 
-  /** insertRecursively(val): insert a new node into the BST with value val.
-   * Returns the tree. Uses recursion. */
+		let current = this.root;
+		// Loop and search the tree for a place to add the node.
+		while (current) {
+			// Throw an error if the val already exists in the tree.
+			if (current.val === val)
+				throw new Error(
+					"Duplicate value: value is already in binary search tree."
+				);
 
-  insertRecursively(val) {
+			const valLessCurrent = val < current.val;
+			const next = valLessCurrent ? current.left : current.right;
+			if (next === null) {
+				if (valLessCurrent) {
+					current.left = node;
+				} else {
+					current.right = node;
+				}
+				return this;
+			}
+			current = next;
+		}
+	}
 
-  }
+	/** insertRecursively(val): insert a new node into the BST with value val.
+	 * Returns the tree. Uses recursion. */
 
-  /** find(val): search the tree for a node with value val.
-   * return the node, if found; else undefined. Uses iteration. */
+	insertRecursively(val) {}
 
-  find(val) {
+	/** find(val): search the tree for a node with value val.
+	 * return the node, if found; else undefined. Uses iteration. */
 
-  }
+	find(val) {}
 
-  /** findRecursively(val): search the tree for a node with value val.
-   * return the node, if found; else undefined. Uses recursion. */
+	/** findRecursively(val): search the tree for a node with value val.
+	 * return the node, if found; else undefined. Uses recursion. */
 
-  findRecursively(val) {
+	findRecursively(val) {}
 
-  }
+	/** dfsPreOrder(): Traverse the array using pre-order DFS.
+	 * Return an array of visited nodes. */
 
-  /** dfsPreOrder(): Traverse the array using pre-order DFS.
-   * Return an array of visited nodes. */
+	dfsPreOrder() {}
 
-  dfsPreOrder() {
+	/** dfsInOrder(): Traverse the array using in-order DFS.
+	 * Return an array of visited nodes. */
 
-  }
+	dfsInOrder() {}
 
-  /** dfsInOrder(): Traverse the array using in-order DFS.
-   * Return an array of visited nodes. */
+	/** dfsPostOrder(): Traverse the array using post-order DFS.
+	 * Return an array of visited nodes. */
 
-  dfsInOrder() {
+	dfsPostOrder() {}
 
-  }
+	/** bfs(): Traverse the array using BFS.
+	 * Return an array of visited nodes. */
 
-  /** dfsPostOrder(): Traverse the array using post-order DFS.
-   * Return an array of visited nodes. */
+	bfs() {}
 
-  dfsPostOrder() {
+	/** Further Study!
+	 * remove(val): Removes a node in the BST with the value val.
+	 * Returns the removed node. */
 
-  }
+	remove(val) {}
 
-  /** bfs(): Traverse the array using BFS.
-   * Return an array of visited nodes. */
+	/** Further Study!
+	 * isBalanced(): Returns true if the BST is balanced, false otherwise. */
 
-  bfs() {
+	isBalanced() {}
 
-  }
+	/** Further Study!
+	 * findSecondHighest(): Find the second highest value in the BST, if it exists.
+	 * Otherwise return undefined. */
 
-  /** Further Study!
-   * remove(val): Removes a node in the BST with the value val.
-   * Returns the removed node. */
-
-  remove(val) {
-
-  }
-
-  /** Further Study!
-   * isBalanced(): Returns true if the BST is balanced, false otherwise. */
-
-  isBalanced() {
-
-  }
-
-  /** Further Study!
-   * findSecondHighest(): Find the second highest value in the BST, if it exists.
-   * Otherwise return undefined. */
-
-  findSecondHighest() {
-    
-  }
+	findSecondHighest() {}
 }
 
 module.exports = BinarySearchTree;
